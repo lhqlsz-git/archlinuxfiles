@@ -20,3 +20,8 @@ grub命令行启动linux
 4、启动
 		initrd /initramfs-linux-lts.img
 		boot
+
+grub重新生成
+rm -r efi grub
+grub-install --efi-directory=/boot 
+grub-mkconfig -o /boot/grub/grub.cfg

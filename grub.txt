@@ -10,11 +10,13 @@ menuentry "Windows 10/11" {
 }
 
 grub命令行启动linux 
-1、设置grub的根设备，指的是包含/boot 目录的那个分区 
+1、找到linux 内核文件和initramfs 镜像
+		ls
+2、告诉grub 它们在哪里
+		set root=UUID=F750-9CBA
+3、告诉内核根文件系统在哪里
+		linux /vmlinuz-linux-lts root=UUID=
 
-	grub> ls 
-	grub> set root=(hdn,gptn)
-	grub> 
-
-
-
+4、启动
+		initrd /initramfs-linux-lts.img
+		boot

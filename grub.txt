@@ -1,0 +1,20 @@
+grub 添加windows启动项
+vim /etc/grub.d/40_custom
+menuentry "Windows 10/11" {
+    insmod part_gpt
+    insmod fat
+    insmod search_fs_uuid
+    insmod chain
+    search --fs-uuid --set=root YOUR-ESP-UUID
+    chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+}
+
+grub命令行启动linux 
+1、设置grub的根设备，指的是包含/boot 目录的那个分区 
+
+	grub> ls 
+	grub> set root=(hdn,gptn)
+	grub> 
+
+
+

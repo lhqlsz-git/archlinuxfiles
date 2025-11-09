@@ -25,3 +25,26 @@ grub重新生成
 rm -r efi grub
 grub-install --efi-directory=/boot 
 grub-mkconfig -o /boot/grub/grub.cfg
+
+grub 引导光盘映像
+menuentry "Arch Linux-iso" {
+	insmod part_gpt
+	insmod fat
+	set root=(hd0,gpt2)
+	set isofile=/iso/archlinux-2025.09.01-x86_64.iso
+	search --no-floppy --set=archiso_img_dev --file "${isofile}"
+	probe --set archiso_img_dev_uuid --fs-uuid "${archiso_img_dev}"
+
+
+    loopback loop (hd0,gpt2)$isofile
+
+	set root=(loop)
+
+	set gfxpayload=keep
+
+
+    linux /arch/boot/x86_64/vmlinuz-linux archisobasedir=arch img_dev=UUID=${archiso_img_dev_uuid} img_loop="${isofile}"
+    initrd /arch/boot/x86_64/initramfs-linux.img
+}
+
+

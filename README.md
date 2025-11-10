@@ -1,3 +1,3 @@
 ﻿# archlinuxfiles
- arch 安装 后 的文件
+
 

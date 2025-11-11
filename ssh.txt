@@ -1,0 +1,27 @@
+安装coc.nvim插件
+sudo pacman -S nodejs yarn vim git npm
+mkdir -p ~/.vim/pack/vendor/start
+cd /home/lhq/.vim/pack/vendor/start
+git clone --depth 1 https://github.com/neoclide/coc.nvim.git
+cd ~/.vim/pack/vendor/start/coc.nvim
+npm install
+yarn build
+
+在vim中执行
+CocInstall coc-pyright
+
+ssh
+ssh-keygen -t rsa 
+~/.ssh/config
+Host  host_name
+	Hostame 	ipaddress
+	User		usrname
+	Port 		port
+
+ssh-copy-id  host_name
+
+
+
+
+
+
